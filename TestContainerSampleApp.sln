@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestContainerSampleApp", "TestContainerSampleApp\TestContainerSampleApp.csproj", "{AE5B393A-7CF8-440D-8465-DF00A7E1B5DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestContainerSampleApp.Tests", "TestContainerSampleApp.Tests\TestContainerSampleApp.Tests.csproj", "{E3879622-3E98-4DC3-8AD3-99CF43BFD71D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestContainerSampleApp.Test", "TestContainerSampleApp.Test\TestContainerSampleApp.Test.csproj", "{A43C66AD-98D2-4572-93E5-FD54BE4A2186}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 		{AE5B393A-7CF8-440D-8465-DF00A7E1B5DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE5B393A-7CF8-440D-8465-DF00A7E1B5DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE5B393A-7CF8-440D-8465-DF00A7E1B5DD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E3879622-3E98-4DC3-8AD3-99CF43BFD71D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3879622-3E98-4DC3-8AD3-99CF43BFD71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3879622-3E98-4DC3-8AD3-99CF43BFD71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3879622-3E98-4DC3-8AD3-99CF43BFD71D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A43C66AD-98D2-4572-93E5-FD54BE4A2186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A43C66AD-98D2-4572-93E5-FD54BE4A2186}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A43C66AD-98D2-4572-93E5-FD54BE4A2186}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A43C66AD-98D2-4572-93E5-FD54BE4A2186}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
