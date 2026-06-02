@@ -50,20 +50,16 @@ public class CoderService : ICoderService
         return entity.ToDto();
     }
 
-    public async Task<CoderDto> UpdateCoder(Guid id, CoderDto dto)
+    public async Task<CoderDto> UpdateCoder(Guid id, UpdateCoderDto dto)
     {
         using var session = _sessionFactory.OpenSession();
         using var tx = session.BeginTransaction();
         
         var coder = await session.GetAsync<Coder>(id);
-
-        dto.ToEntity();
         
         coder.Architecture = dto.Architecture;
         coder.IsVibeCoder = dto.IsVibeCoder;
         coder.Language = dto.Language;
-        coder.Name = dto.Name;
-        coder.Id = id;
         
         await session.UpdateAsync(coder);
         

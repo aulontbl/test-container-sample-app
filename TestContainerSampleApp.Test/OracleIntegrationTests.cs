@@ -1,12 +1,12 @@
 ﻿namespace TestContainerSampleApp.Test;
 using Testcontainers.Oracle;
-using System.Data.OracleClient;
+using Oracle.ManagedDataAccess.Client;
 
 [TestClass]
 [TestCategory("Integration")]
 public class OracleIntegrationTests
 {
-    private static readonly OracleContainer _oracle = new OracleBuilder().WithImage("gvenzl/oracle-free:23.4-slim-faststart").Build();
+    private static readonly OracleContainer _oracle = new OracleBuilder().WithImage("gvenzl/oracle-free:23.4-slim-faststart").WithPortBinding(1521, 1521).Build();
     
     [ClassInitialize]
     public static async Task ClassInitialize(TestContext context)

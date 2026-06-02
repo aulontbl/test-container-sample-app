@@ -3,10 +3,13 @@ using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
 using NHibernate.Driver;
+using NHibernate.Mapping.ByCode;
+using NHibernate.Tool.hbm2ddl;
 using Scalar.AspNetCore;
 using TestContainerSampleApp;
 
 var builder = WebApplication.CreateBuilder(args);
+var oracleConnectionString = builder.Configuration.GetConnectionString("Oracle");
 
 builder.Services.AddOpenApi();
 
@@ -18,13 +21,22 @@ builder.Services.AddSingleton<ISessionFactory>(_ =>
 
     cfg.DataBaseIntegration(db =>
     {
-        db.ConnectionString = builder.Configuration.GetConnectionString("Oracle");
+        db.ConnectionString = oracleConnectionString;
         db.Driver<OracleManagedDataClientDriver>();
         db.Dialect<Oracle12cDialect>();
     });
 
+    var mapper = new ModelMapper();
+    mapper.AddMapping<CoderMap>();
+    mapper.AddMapping<AdisCoderMap>();
+    cfg.AddMapping(mapper.CompileMappingForAllExplicitlyAddedEntities());
+
+    new SchemaUpdate(cfg).Execute(false, true);
+
     return cfg.BuildSessionFactory();
 });
+
+
 
 var app = builder.Build();
 
@@ -48,11 +60,14 @@ app.MapPost("/coders", async ([FromServices] ICoderService service, CreateCoderD
     return Results.Created($"/coders/{createdCoder.Id}", createdCoder);
 });
 
-app.MapPut("/coders/{id:guid}", async ([FromServices] ICoderService service, Guid id) =>
+app.MapPut("/coders/{id:guid}", async ([FromServices] ICoderService service, Guid id, UpdateCoderDto updatedCoder) =>
 {
     var coder = await service.GetCoderById(id);
-    if (coder is null) return Results.NotFound();
-    await service.UpdateCoder(id, coder);
+    if (coder is null)
+    {
+        return Results.NotFound();
+    }
+    await service.UpdateCoder(id, updatedCoder);
     return Results.NoContent();
 });
 

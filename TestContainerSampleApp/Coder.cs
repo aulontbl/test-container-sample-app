@@ -2,11 +2,11 @@
 
 public class Coder
 {
-    public Guid Id { get; set; }
-    public string Name { get; set; }
-    public string Language { get; set; }
-    public string Architecture { get; set; }
-    public bool IsVibeCoder { get; set; }
+    public virtual Guid Id { get; set; }
+    public virtual string Name { get; set; }
+    public virtual string Language { get; set; }
+    public virtual string Architecture { get; set; }
+    public virtual bool IsVibeCoder { get; set; }
 }
 
 public class AdisCoder : Coder
@@ -19,6 +19,8 @@ public class AdisCoder : Coder
 
 public record CoderDto(Guid Id, string Name, string Language, string Architecture, bool IsVibeCoder);
 public record CreateCoderDto(string Name, string Language, string Architecture, bool IsVibeCoder);
+public record UpdateCoderDto(string Language, string Architecture, bool IsVibeCoder);
+
 
 
 public static class CoderExtensions
@@ -44,7 +46,6 @@ public static class CoderExtensions
     {
         return new Coder
         {
-            Id = Guid.NewGuid(),
             Name = coderDto.Name,
             Language = coderDto.Language,
             Architecture = coderDto.Architecture,

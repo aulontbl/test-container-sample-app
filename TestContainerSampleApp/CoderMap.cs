@@ -14,7 +14,7 @@ public class CoderMap : ClassMapping<Coder>
         Id(c => c.Id, map =>
         {
             map.Column("id");
-            map.Generator(Generators.Identity);
+            map.Generator(Generators.Assigned);
         });
         
         Discriminator(d =>
