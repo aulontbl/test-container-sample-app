@@ -29,6 +29,7 @@ public class CoderMap : ClassMapping<Coder>
         Property(c => c.IsVibeCoder, map => map.Column("is_vibe_coder"));
         
 
+        DiscriminatorValue("coder");
     }
 }
 
